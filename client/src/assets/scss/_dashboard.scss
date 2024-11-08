@@ -1,0 +1,779 @@
+/* Hide the scrollbar, but still allow scrolling */
+body,
+html {
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+}
+
+/* Optional: Smooth scrolling effect */
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    /* Thin width, like on mobile */
+}
+
+::-webkit-scrollbar-thumb {
+    background: $primary-color;
+    /* Scrollbar thumb color */
+    border-radius: 10px;
+    /* Rounded edges */
+}
+
+.dashboard-panel-container {
+    background: $secondary-color;
+    width: 100%;
+}
+
+.dashboard-panel-container .panel {
+    padding: 10px 0;
+    margin: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel .panel-logo {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 55;
+}
+
+.panel .panel-logo .panel-burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 30px;
+    min-width: 20px;
+    color: $primary-color;
+    // background-color: #303030;
+
+}
+
+.panel .panel-account {
+    background-color: #303030;
+    padding: 6px;
+    transition: all 300ms ease-in-out;
+    border-radius: 30px;
+    position: relative;
+    z-index: 99;
+}
+
+.panel .panel-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.panel .panel-account:hover {
+    transition: all 300ms ease-in-out;
+    background-color: $primary-color;
+}
+
+.panel .panel-account:hover .panel-account-container .panel-account-icon {
+    transition: all 300ms ease-in-out;
+    color: #303030;
+}
+
+.panel .panel-account-container .panel-account-image {
+    overflow: hidden;
+    width: 30px;
+    width: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 3px;
+}
+
+.panel .panel-account-container .panel-account-icon {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color;
+    padding-right: 6px;
+}
+
+
+.profile-options {
+    position: absolute;
+    top: 130%;
+    right: 0;
+    min-width: 300px;
+    height: 330px;
+    background-color: $secondary-color;
+    z-index: 101;
+    border-radius: 20px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+    border: 1px solid $primary-color;
+    overflow: hidden;
+    transform: scale(0);
+    transition: all 200ms ease-in-out;
+    transform-origin: top right;
+}
+
+.profile-options.active {
+    transform-origin: top right;
+    transform: scale(1);
+}
+
+.profile-options .profile-avatar {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 0.2px solid rgb(43, 43, 43);
+    cursor: default;
+}
+
+.profile-options .profile-avatar .profile-image {
+    border-radius: 100%;
+    min-width: 40px;
+    max-width: 40px;
+    margin: 0 12px;
+    overflow: hidden;
+}
+
+.profile-options .profile-avatar .profile-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-options .profile-avatar .profile-detail {
+    color: #3a3a3a;
+}
+
+.profile-options .profile-avatar .profile-detail .profile-name {
+    color: $primary-color;
+}
+
+.profile-options .profile-avatar .profile-detail .profile-email {
+    color: #676767;
+    white-space: nowrap;
+}
+
+.profile-options .profile-options-menu {
+    padding: 5px;
+
+}
+
+.profile-options .profile-options-menu .item {
+    color: #676767;
+    display: flex;
+    // justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.profile-options .profile-options-menu .item:hover {
+    background-color: $primary-color;
+    color: white;
+}
+
+
+.profile-options .profile-options-menu .item .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.profile-options .profile-options-menu .item .text {
+    font-size: 16px;
+}
+
+
+@media only screen and (max-width: 430px) {
+    .profile-options.active .profile-avatar .profile-detail .profile-name {
+        font-size: 14px;
+    }
+}
+
+/////////////////////////////////////////////////////////////////
+// Panel Left Side Bar
+/////////////////////////////////////////////////////////////////
+
+.content {
+    position: relative;
+}
+
+.panel-left-side {
+    position: absolute;
+    width: 260px;
+    height: calc(100vh - 59px);
+    background: $secondary-color;
+    padding: 20px;
+    transition: all 300ms ease-in-out;
+    overflow: scroll;
+}
+
+.panel-left-side::-webkit-scrollbar {
+    display: none;
+}
+
+.panel-left-side::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+.panel-left-side::-webkit-scrollbar-track {
+    display: none;
+}
+
+.panel-left-side.active {
+    width: 50px;
+    padding: 20px 10px;
+}
+
+.panel-left-side::before {
+    content: "";
+    position: absolute;
+
+    background-color: transparent;
+    top: 0;
+    right: -25px;
+    height: 50px;
+    width: 25px;
+    border-top-left-radius: 25px;
+    box-shadow: 0 -25px 0 0 $secondary-color;
+    z-index: 1;
+}
+
+.panel-left-side .item {
+    color: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transition: all 300ms ease-in-out;
+    padding: 15px 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+
+}
+
+.panel-left-side.active .item {
+    padding: 15px 0px;
+}
+
+.panel-left-side .item:hover {
+    background-color: $primary-color;
+}
+
+.panel-left-side .item:hover .icon {
+    color: white
+}
+
+.panel-left-side .item:hover p {
+    color: white
+}
+
+.panel-left-side .item .icon {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 25px;
+    transition: all 300ms ease-in-out;
+    color: rgb(112, 112, 112)
+}
+
+.panel-left-side.active .item .icon {
+    padding: 0 0px;
+
+}
+
+.panel-left-side.active .item p {
+    transition: all 300ms ease-in-out;
+    opacity: 0;
+}
+
+
+.panel-left-side .item p {
+    white-space: nowrap;
+    margin: 0;
+    color: rgb(112, 112, 112)
+}
+
+/////////////////////////////////////////////////////////////////
+// Panel Right Side Bar
+/////////////////////////////////////////////////////////////////
+.panel-right-side {
+    width: calc(100% - 290px);
+    left: 260px;
+    height: calc(100vh - 84px);
+    margin: 10px;
+    border-radius: 20px;
+    background-color: $secondary-color;
+    // background-color: red;
+    position: absolute;
+    transition: all 300ms ease-in-out;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.panel-right-side.active {
+    width: calc(100% - 160px);
+    left: 50px;
+
+}
+
+// Min Width
+@media only screen and (min-width: 430px) {
+    .panel-left-side.active {
+        width: 70px;
+        padding: 20px 10px;
+    }
+
+    .panel-left-side.active .item {
+        padding: 15px 12px;
+        // padding: 12px;
+    }
+
+    .panel-right-side.active {
+        width: calc(100% - 100px);
+        left: 70px;
+    }
+}
+
+// Max Width
+@media only screen and (max-width: 430px) {
+    .panel .panel-logo {
+        width: 90px;
+        flex-direction: row-reverse;
+    }
+
+    .panel-left-side {
+        width: 100%;
+        z-index: 99;
+    }
+
+    .panel-left-side::before {
+        content: "";
+        display: none;
+    }
+
+    .panel-left-side.active {
+        left: -20%;
+    }
+
+    .panel-left-side.active .item .icon {
+        padding: 0 3px;
+    }
+
+    .panel-right-side {
+        width: calc(100% - 20px);
+        left: 0;
+        padding: 20px 10px;
+    }
+
+    .panel-right-side.active {
+        width: calc(100% - 20px);
+        left: 0px;
+    }
+}
+
+
+
+
+
+////////////////////////////////////////////
+// Dashboard Content
+////////////////////////////////////////////
+
+.panel-main-content {
+    overflow: hidden;
+}
+
+.panel-main-content hr {
+    color: #3a3a3a;
+}
+
+
+.panel-main-content h3 {
+    font-family: FirstJob;
+    letter-spacing: 1px;
+    color: $primary-color;
+}
+
+.panel-main-content .dashboard-box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
+
+.panel-main-content .dashboard-box .item {
+    height: 180px;
+    background-color: #303030;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    z-index: 3;
+    transition: all 300ms ease-in-out;
+    box-shadow: rgba(24, 24, 24, 0.2) 0px 7px 29px 0px;
+}
+
+.panel-main-content .dashboard-box .item::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 220px;
+    height: 220px;
+    background-color: #3a3a3a;
+    border-radius: 100%;
+    z-index: -2;
+    transition: all 500ms ease-in-out;
+}
+
+.panel-main-content .dashboard-box .item:hover {}
+
+.panel-main-content .dashboard-box .item:hover::after {
+    // background-color: red;
+    width: 720px;
+    height: 720px;
+    right: -200px;
+    top: -200px;
+
+}
+
+
+.panel-main-content .dashboard-box .item::before {
+    content: '';
+    position: absolute;
+    bottom: -90px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    background-color: #676767;
+    border-radius: 100%;
+    z-index: -1;
+}
+
+
+.panel-main-content .dashboard-box .item text {
+    fill: white;
+}
+
+.panel-main-content .dashboard-box .item.item-1 {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    flex-direction: row;
+}
+
+.panel-main-content .dashboard-box .item.item-1 .detail {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    // align-items: center;
+    padding: 10px 0;
+
+    h5 {
+        color: $primary-color;
+        font-size: 20px;
+        white-space: nowrap;
+    }
+
+    span {
+        font-size: 16px;
+        color: rgb(121, 121, 121);
+    }
+}
+
+.panel-main-content .dashboard-box .item.item-1 .detail.admin {
+    h2 {
+        color: white;
+    }
+}
+
+
+
+.panel-main-content .dashboard-box .item.item-1 .progress {
+    width: 50%;
+    height: 100%;
+    background: none;
+}
+
+.panel-main-content .dashboard-box .item.item-1 .counter {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        color: white;
+    }
+
+    h2 {
+        color: white;
+        font-size: 35px;
+    }
+}
+
+
+
+// Dashboard Recent
+
+.panel-main-content .dashboard-recent {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.panel-main-content .dashboard-recent .item {
+    padding: 10px;
+    padding-bottom: 0;
+    border-radius: 20px;
+    background: #303030;
+    overflow-x: scroll;
+}
+
+.panel-main-content .dashboard-recent .item.item-1 {
+    h5 {
+        color: $primary-color;
+        font-weight: bold;
+        padding: 0;
+        margin-bottom: 10px;
+        width: fit-content;
+    }
+
+    .rwd-table {
+        margin: 0 !important;
+    }
+
+    tr:nth-last-child(1) {
+        border-bottom: none;
+    }
+}
+
+.panel-main-content .dashboard-recent .item.item-2 {
+    width: 100%;
+    background: #303030;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h5 {
+        color: $primary-color;
+        font-weight: bold
+    }
+
+    canvas {
+        width: 100%;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 894px) {
+    .panel-main-content .dashboard-box {
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+@media only screen and (max-width: 1161px) {
+    .panel-main-content .dashboard-recent {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media only screen and (max-width: 430px) {
+    .panel-main-content h3 {
+        font-size: 24px;
+        font-family: FirstJob;
+        letter-spacing: 1px;
+        color: $primary-color;
+    }
+
+    .panel-main-content .dashboard-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+//////////////////////////////////////////
+// Settings
+//////////////////////////////////////////
+
+
+.setting-profile-avatar {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 100%;
+    border: 4px dashed #FB751A;
+    padding: 4px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+}
+
+
+
+//////////////////////////////////////////
+// Available Product
+//////////////////////////////////////////
+
+.search-container {
+    width: 100%;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+
+    .wrapper {
+        border: 3px solid #FB751A;
+        background: none;
+    }
+
+
+}
+
+
+.available-product {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 20px;
+    align-items: end; // This ensures the items align to the bottom of each grid cell by default
+    margin-top: 20px;
+
+    // If you want items to auto-jump towards the bottom, this ensures they will align to the bottom of the available space.
+    justify-items: center; // Centers the items horizontally in each grid cell
+}
+
+
+
+@media only screen and (max-width: 1426px) {
+    .available-product {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1187px) {
+    .available-product {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .available-product {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .available-product {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+
+
+
+
+//////////////////////////////////////////
+// User Game Swap
+//////////////////////////////////////////
+
+
+.popup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+
+    .form {
+        width: 100%;
+        padding: 0;
+        padding-top: 20px;
+    }
+
+    .icon {
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        font-size: 80px;
+        color: #FB751A;
+        margin-bottom: 15px;
+    }
+
+    .subHeading {
+        color: #FB751A;
+        font-weight: 700;
+    }
+
+
+
+
+    .form button.submit {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 18px;
+        gap: 10px;
+        width: 100%;
+        height: 42px;
+        background: linear-gradient(180deg, #4480FF 0%, #115DFC 50%, #0550ED 100%);
+        box-shadow: 0px 0.5px 0.5px #EFEFEF, 0px 1px 0.5px rgba(239, 239, 239, 0.5);
+        border-radius: 5px;
+        border: 0;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        color: #ffffff;
+    }
+}

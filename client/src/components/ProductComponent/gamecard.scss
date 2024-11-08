@@ -1,0 +1,120 @@
+// Global root variables (defined in :root for easier theming and reusability)
+:root {
+  --card-width: 195px;
+  --card-height: 285px;
+  --bg-color: #313131;
+  --text-color: white;
+  --transition-duration: 0.2s;
+  --hover-scale: 1.04;
+  --blur-filter: 7px;
+  --font-light-grey: lightgrey;
+  --font-bold: bold;
+  --font-size-head: 20px;
+  --font-size-price: 17px;
+  --font-size-span: 12px;
+}
+
+// Card styles
+.game-card {
+  width: 100%;
+  height: var(--card-height);
+  background: var(--bg-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  transition: var(--transition-duration) ease-in-out;
+  position: relative;
+  padding: 15px;
+  overflow: hidden;
+
+  &:hover {
+    border: 2px solid #FB751A;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    
+  }
+
+  .game-icon {
+    font-size: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+  }
+
+    .textBox {
+      opacity: 1;
+      .text {
+        color: #FB751A;
+        font-size: 24px;
+      }
+      span {
+        color: white;
+        text-align: center;
+        font-size: 16px;
+      }
+      button {
+        padding: 8px 24px !important;
+      }
+    }
+
+    .img {
+      height: 65%;
+      filter: blur(var(--blur-filter));
+    }
+}
+
+// Image styles
+.img {
+  height: 30%;
+  position: absolute;
+  transition: var(--transition-duration) ease-in-out;
+  z-index: 1;
+}
+
+// Text box styles
+.textBox {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: var(--transition-duration) ease-in-out;
+  z-index: 2;
+
+  .text {
+    font-weight: var(--font-bold);
+  }
+
+  .head {
+    font-size: var(--font-size-head);
+  }
+
+  .price {
+    font-size: var(--font-size-price);
+  }
+
+  span {
+    font-size: var(--font-size-span);
+    color: var(--font-light-grey);
+  }
+}
+
+
+.game-card .game-icon {
+  filter: blur(8px);
+}

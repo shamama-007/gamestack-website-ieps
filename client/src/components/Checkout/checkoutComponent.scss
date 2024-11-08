@@ -1,0 +1,136 @@
+$primary-color: #FB751A;
+
+.top-checkout-heading {
+  color: $primary-color;
+  margin-bottom: 20px;
+  text-transform: uppercase;  font-family: FirstJob;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+.checkout-content .billing-address,
+.checkout-content .payment-method {
+  background-color: #161616;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.checkout-left-side .billing-address .checkout-heading,
+.checkout-left-side .payment-method .checkout-heading {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  h4 {
+    color: white
+  }
+
+  .icon {
+    margin-right: 10px !important;
+    font-size: 40px;
+    display: flex;
+    color: $primary-color;
+  }
+}
+
+.checkout-left-side .payment-method.active {
+  background: #414141;
+  filter: blur(1px);
+}
+
+#rd1,
+#rd2 {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+/* Accordion styles */
+.tabs {
+  overflow: hidden;
+}
+
+.tab {
+  width: 100%;
+  color: white;
+  overflow: hidden;
+  border: 2px solid #414141;
+  margin-bottom: 20px;
+
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    font-weight: bold;
+    cursor: pointer;
+
+    /* Icon */
+    &::after {
+      content: "\276F";
+      width: 1em;
+      height: 1em;
+      text-align: center;
+    }
+  }
+
+  &-content {
+    max-height: 0;
+    padding: 0 1em;
+  }
+}
+
+.payment-method-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-method-icon .icon {
+  margin-right: 10px !important;
+}
+
+// :checked
+input:checked {
+  +.tab-label {
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+
+  ~.tab-content {
+    max-height: 100vh;
+    padding: 1em;
+  }
+}
+
+
+
+.checkout-right-side {
+  background-color: #161616;
+  border-radius: 4px;
+  padding: 20px;
+
+  h4 {
+    color: white
+  }
+  h5 {
+    color: #757575;
+  }
+  .plan-text {
+    color: #d4d4d4;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .plan-text-total {
+    font-size: 22px;
+    color: $primary-color;
+  }
+  h6 {
+    color: #757575;
+  }
+
+  hr {
+    color: #414141
+  }
+ 
+}

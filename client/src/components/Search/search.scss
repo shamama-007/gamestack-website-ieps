@@ -1,0 +1,85 @@
+$primary-color: #FB751A;
+$fm-unna: 'Unna', serif;
+$fm-nunito: 'Nunito Sans', sans-serif;
+/* Fullscreen search overlay */
+.fullscreen-search {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: all 0.5s ease;
+    z-index: 1000;
+}
+
+/* When active, show the search */
+.fullscreen-search.active {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Search input and close button container */
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    position: relative;
+    // max-width: 600px;
+}
+
+/* Stylish input field */
+.search-input {
+    width: 100%;
+    padding: 15px 25px;
+    font-size: 20px;
+    border-radius: 50px;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+}
+
+.search-input:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: $primary-color;
+}
+
+/* Stylish close button */
+.close-search-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.close-search-btn:hover {
+    color: $primary-color;
+}
+
+
+@media only screen and (max-width: 430px) {
+    .search-container {
+        width: 90%;
+    }
+}

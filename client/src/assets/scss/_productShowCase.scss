@@ -1,0 +1,163 @@
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    // margin-right: 10px !important;
+    border: 1px solid transparent !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    /* background-color: rgb(205, 205, 205); */
+    background-color: rgba(61, 61, 61, 0.5);
+    right: 10px;
+    padding: 22px;
+    color: #fff !important;
+    fill: black !important;
+    stroke: black !important;
+    width: 30px;
+    height: 60px;
+    transition: all 400ms ease-in-out;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: $primary-color;
+    transition: all 400ms ease-in-out;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 12px !important;
+    color: rgb(210, 210, 210);
+}
+
+.swiper-button-next:hover:after,
+.swiper-button-prev:hover:after {
+    color: rgb(255, 255, 255);
+}
+
+.product-container {
+    padding-bottom: 70px;
+}
+
+.product-showCase {}
+
+.product-showCase h3 {
+    // color: white;
+    font-family: FirstJob;
+    color: $primary-color;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-left: 5px solid $primary-color;
+    padding-left: 10px;
+}
+
+.product-showCase .product-showCase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+// .product-showCase .product-showCase-header span {
+//     border: 3px solid $primary-color;
+//     color: $primary-color;
+//     padding: 10px 15px;
+//     border-radius: 50px;
+//     font-weight: 700;
+//     cursor: pointer;
+//     transition: all 300ms ease-in-out;
+// }
+// .product-showCase .product-showCase-header span:hover {
+//     background-color: $primary-color;
+//     color: white;
+
+// }
+
+.product-showCase .product-showCase-header .view-more-btn {
+    border: none;
+    display: block;
+    position: relative;
+    padding: 0.4em 1em;
+    font-size: 18px;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    color: $primary-color !important;
+    z-index: 1;
+    font-family: inherit;
+    font-weight: 500;
+    font-weight: bold;
+}
+
+.product-showCase .product-showCase-header .view-more-btn span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    border: 4px solid $primary-color;
+}
+
+.product-showCase .product-showCase-header .view-more-btn span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: #0F0F0F;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 0.3s;
+}
+
+.product-showCase .product-showCase-header .view-more-btn:hover span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: $primary-color;
+}
+
+.product-showCase .product-showCase-header .view-more-btn:hover {
+    color: white !important;
+}
+
+.product-showCase .product-showCase-header .view-more-btn:active span::before {
+    background: $primary-color;
+}
+
+@media only screen and (max-width: 430px) {
+    .product-showCase h3 {
+        // color: white;
+        font-size: 20px;
+        font-weight: 200;
+        border-width: 2px;
+    }
+
+    .product-showCase .product-showCase-header .view-more-btn {
+       
+        padding: 0.4em .7em;
+        font-size: 12px;
+        font-weight: 500;
+        font-weight: 400;
+    }
+    
+    .product-showCase .product-showCase-header .view-more-btn span {
+        border: 1.5px solid $primary-color;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        padding: 20px 15px;
+        width: 5px;
+        height: 25px;
+    }
+}
