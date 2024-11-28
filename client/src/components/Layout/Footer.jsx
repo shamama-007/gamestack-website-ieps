@@ -32,7 +32,8 @@ const Footer = () => {
                             <h6>Quick Links</h6>
                             <ul className="footer-links">
                                 <li><Link to="/">Home</Link></li>
-                                <li><Link to="/categories">Categories</Link></li>
+                                <li><Link to="/plan">Plan</Link></li>
+                                <li><Link to="/about">About</Link></li>
                                 <li><Link to="/signin">Sign In</Link></li>
                                 <li><Link to="/signup">Sign Up</Link></li>
                                 <li><Link to="/user/dashboard">User </Link></li>

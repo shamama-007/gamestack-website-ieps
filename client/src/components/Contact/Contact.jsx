@@ -1,5 +1,6 @@
 import "../customStyle.scss";
 
+
 const ContactComponent = () => {
     return (
         <div><section className="plan-container contact-page-sec">
@@ -18,14 +19,21 @@ const ContactComponent = () => {
                         <form className="form">
                             <h3>Get in Touch</h3>
                             <div className="flex-column">
-                                <label>Enter your name</label>
+                                <label>Name</label>
                             </div>
                             <div className="inputForm">
-                                <input type="text" className="input" />
+                                <input type="text" className="input" placeholder="Enter Your Name" />
                             </div>
 
                             <div className="flex-column">
-                                <label>Enter your phone number</label>
+                                <label>Email</label>
+                            </div>
+                            <div className="inputForm">
+                                <input type="text" className="input" placeholder="Enter Your Email" />
+                            </div>
+
+                            <div className="flex-column">
+                                <label>Phone Number</label>
                             </div>
                             <div className="inputForm">
                                 <input type="text" className="input" placeholder="03XX-XXXXXXX" />
@@ -33,10 +41,10 @@ const ContactComponent = () => {
 
 
                             <div className="flex-column">
-                                <label>Enter your message</label>
+                                <label>Message</label>
                             </div>
                             <div className="textareaForm">
-                                <textarea type="text" className="textarea" placeholder="Give me your opinion!" ></textarea>
+                                <textarea type="text" className="textarea" rows={6} placeholder="Give me your opinion!" ></textarea>
                             </div>
 
 

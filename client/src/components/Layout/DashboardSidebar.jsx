@@ -6,7 +6,6 @@ import {
   IoSettingsOutline,
   IoSpeedometerOutline,
   IoLogOutOutline,
-  IoStatsChartOutline,
 } from "react-icons/io5";
 import { AiOutlineProduct } from "react-icons/ai";
 import { useEffect, useState } from "react";
@@ -26,7 +25,7 @@ const DashboardSidebar = ({ children }) => {
   const [profileOption, setProfileOption] = useState(false);
   const [logoutConfirm, setLogoutConfirm] = useState(false);
 
-  
+
   const { auth } = useSelector((state) => state.userAuth);
 
   const handleChildData = (data) => {
@@ -38,7 +37,7 @@ const DashboardSidebar = ({ children }) => {
     toast.success("Logout successfully");
   };
 
-  
+
   useEffect(() => {
     if (auth === false) {
       navigate("/signin");
@@ -57,7 +56,7 @@ const DashboardSidebar = ({ children }) => {
       />
       <header className="dashboard-panel-container">
         <nav className="panel">
-          <div className=" panel-logo">
+          <Link to="/" className=" panel-logo">
             <img src={Logo} />
             <div
               className="panel-burger"
@@ -65,7 +64,7 @@ const DashboardSidebar = ({ children }) => {
             >
               <IoMenu />
             </div>
-          </div>
+          </Link>
 
           <div className="panel-account">
             <div
@@ -99,13 +98,7 @@ const DashboardSidebar = ({ children }) => {
                   </div>
                   <div className="text">Dashboard</div>
                 </Link>
-                <Link to={"/user/subscription"} className="item">
-                  <div className="icon">
-                    <IoStatsChartOutline />
-                  </div>
-                  <div className="text">Subscription</div>
-                </Link>
-            
+
                 <Link to={"/user/settings"} className="item">
                   <div className="icon">
                     <IoSettingsOutline />
@@ -135,20 +128,14 @@ const DashboardSidebar = ({ children }) => {
             </div>
             <p>Dashboards</p>
           </Link>
-          <Link to={"/user/subscription"} className="item">
-            <div className="icon">
-              <IoStatsChartOutline />
-            </div>
-            <p>Subscription</p>
-          </Link>
 
           <Link to={"/user/available-product"} className="item">
             <div className="icon">
-            <AiOutlineProduct />
+              <AiOutlineProduct />
             </div>
-            <p>Availabel Product</p>
+            <p>Available Product</p>
           </Link>
-         
+
           <Link to={"/user/settings"} className="item">
             <div className="icon">
               <IoSettingsOutline />

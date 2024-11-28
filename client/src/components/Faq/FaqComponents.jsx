@@ -34,13 +34,6 @@ const FaqComponents = () => {
                         <label htmlFor="accordion4" className="accordion-item-title"><span className="icon"></span>How Novice Plus and Pro members can have access to a new game?</label>
                         <div className="accordion-item-desc">Novice Plus or Pro members are required to inform us minimum 3 weeks before the release of any particular game only then we will be able to onboard the required number of games and will deliver them. Requests received from Novice Plus and Pro members after we have onboarded the game and added to our list will be treated as prio, </div>
                     </div>
-
-                    <div className="accordion-item">
-                        <input type="checkbox" id="accordion5" />
-                        <label htmlFor="accordion5" className="accordion-item-title"><span className="icon"></span>What is the role of backlinks in SEO, and how can they be acquired?</label>
-                        <div className="accordion-item-desc">Backlinks, or inbound links from other websites to yours, play a significant role in SEO. They are considered a vote of confidence and can improve a site&rsquo;s authority. Quality over quantity is crucial when acquiring backlinks. Strategies for obtaining backlinks include creating high-quality content, guest posting, reaching out to industry influencers, and participating in community activities. It&rsquo;s important to focus on natural and ethical link-building practices.</div>
-                    </div>
-
                 </div>
             </section>
         </>

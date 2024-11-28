@@ -13,10 +13,15 @@ const {
   getBannerImage,
   bannerStatusUpdate,
   bannerImageDelete,
-  getBannerImageSingle
+  getBannerImageSingle,
+  getEventLogo,
+  getEventLogoImageSingle,
+  eventLogoImage,
+  eventStatusUpdate,
+  eventImageDelete
 } = require("../controllers/adminController");
 
-router.post("/admin/register", adminRegister);
+router.post("/admin/register", isAuthenticatedAdmin, adminRegister);
 
 router.post("/admin/login", adminLogin);
 
@@ -36,5 +41,17 @@ router.post("/admin/banner/image", isAuthenticatedAdmin, bannerImage);
 router.put("/admin/banner/image/:bannerId", isAuthenticatedAdmin, bannerStatusUpdate);
 
 router.delete("/admin/banner/image/:bannerId", isAuthenticatedAdmin, bannerImageDelete);
+
+// Event Logo Image
+router.get("/admin/event/image", getEventLogo);
+
+router.get("/admin/event/image/:eventId", getEventLogoImageSingle);
+
+router.post("/admin/event/image", isAuthenticatedAdmin, eventLogoImage);
+
+router.put("/admin/event/image/:eventId", isAuthenticatedAdmin, eventStatusUpdate);
+
+router.delete("/admin/event/image/:eventId", isAuthenticatedAdmin, eventImageDelete);
+
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { IoCloseOutline } from "react-icons/io5";
+import { IoCloseOutline, IoPerson, IoSearch } from "react-icons/io5";
 import SearchBar from '../Search/Search';
 import Logo from "../../assets/img/logo.png"
 const Navbar = () => {
@@ -9,6 +9,7 @@ const Navbar = () => {
 
     const onSearchHandler = () => {
         setSearchToggle(!searchToggle);
+        setMenuToggle(false);
     }
 
 
@@ -19,15 +20,24 @@ const Navbar = () => {
                 <Link to="/"> <img src={Logo} alt="" /> </Link>
                 <div className="menu">
                     <Link to="/">HOME</Link>
+                    <Link to="/about">ABOUT</Link>
+                    <Link to="/plan">SUBSCRIPTION</Link>
+                    <Link to="/gift-cards">GIFT CARDS</Link>
+                    <Link to="/events">EVENTS</Link>
                     <Link to="/contact">CONTACT</Link>
-                    <Link to="/plan">PLAN</Link>
-                    <Link to="/signin">SIGN IN</Link>
-                    <Link to="/signup">SIGN UP</Link>
+                    {/* <Link to="/signup">SIGN UP</Link> */}
                 </div>
                 <div className="account">
-                    <button type='button' onClick={onSearchHandler} className='custom-style-btn'> SEARCH GAMES
-                        <span></span>
+                    <button to="/signin" className="menu-icon" onClick={onSearchHandler}>
+                        <div className="icon"><IoSearch /></div>
+                        <div className="icon-text"><span>SEARCH GAMES</span></div>
                     </button>
+
+                    <Link to="/signin" className="menu-icon">
+                        <div className="icon"><IoPerson /></div>
+                        <div className="icon-text"><span>SIGN IN</span></div>
+                    </Link>
+
                 </div>
                 <div className="burger-menu" onClick={() => setMenuToggle(!menuToggle)}>
                     <div className="burger line1"></div>
@@ -52,10 +62,16 @@ const Navbar = () => {
                     <Link to="/signup">SIGN UP</Link>
                 </div>
 
-                <div className="account-mobile" >
-                    <button onClick={onSearchHandler} type='button' className='custom-style-btn'>SEARCH GAMES
-                        <span></span>
+                <div className="account account-mobile" >
+                    <button to="/signin" className="menu-icon" onClick={onSearchHandler}>
+                        <div className="icon"><IoSearch /></div>
+                        <div className="icon-text"><span>SEARCH GAMES</span></div>
                     </button>
+
+                    <Link to="/signin" className="menu-icon">
+                        <div className="icon"><IoPerson /></div>
+                        <div className="icon-text"><span>SIGN IN</span></div>
+                    </Link>
                 </div>
             </div>
 

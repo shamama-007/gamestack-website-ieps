@@ -20,7 +20,7 @@ const AdminLogin = () => {
         if (alert === true) {
             if (success === true) {
                 toast.success(message);
-                navigate("/admin/dashboard");
+                navigate("/admin/banner");
             }
             if (success === false) {
                 toast.error(message);
@@ -28,7 +28,7 @@ const AdminLogin = () => {
         }
 
         if (auth === true) {
-            navigate("/admin/dashboard");
+            navigate("/admin/banner");
         }
 
         if (auth === false) {

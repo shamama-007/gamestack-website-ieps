@@ -1,7 +1,7 @@
 import Logo from "../../assets/img/logo.png"
 import Profile from "../../assets/img/dummy-profile-image.jpg"
 
-import { IoMenu, IoSettingsOutline, IoHappyOutline, IoSpeedometerOutline, IoLogOutOutline, IoPulseOutline, IoPeopleOutline, IoAperture } from "react-icons/io5";
+import { IoMenu, IoSettingsOutline, IoHappyOutline, IoSpeedometerOutline, IoLogOutOutline, IoPeopleOutline, IoAperture } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Model from "../Modal/Model";
@@ -32,12 +32,12 @@ const AdminDashboardSidebar = ({ children }) => {
 
             <header className='dashboard-panel-container'>
                 <nav className="panel">
-                    <div className=" panel-logo">
+                    <Link to="/" className=" panel-logo">
                         <img src={Logo} />
                         <div className="panel-burger" onClick={() => setIsToggle(!isToggle)}>
                             <IoMenu />
                         </div>
-                    </div>
+                    </Link>
 
                     <div className="panel-account">
                         <div className="panel-account-container" onClick={() => setProfileOption(!profileOption)}>
@@ -63,10 +63,7 @@ const AdminDashboardSidebar = ({ children }) => {
                                     <div className="icon"><IoSpeedometerOutline /></div>
                                     <div className="text">Dashboard</div>
                                 </Link>
-                                <Link to={"/admin/subscription"} className="item">
-                                    <div className="icon"><IoPulseOutline /></div>
-                                    <div className="text">Subscription</div>
-                                </Link>
+                                
                                 <Link to={"/admin/settings"} className="item">
                                     <div className="icon"><IoSettingsOutline /></div>
                                     <div className="text">Setting</div>
@@ -88,29 +85,29 @@ const AdminDashboardSidebar = ({ children }) => {
 
             <div className="content">
                 <div className={`panel-left-side ${isToggle ? 'active' : ''}`}>
-                    <Link to={'/admin/dashboard'} className="item">
+                    {/* <Link to={'/admin/dashboard'} className="item">
                         <div className="icon"><IoSpeedometerOutline /></div>
                         <p>Dashboards</p>
-                    </Link>
-
-                    <Link to={'/admin/subscription'} className="item">
-                        <div className="icon"><IoPulseOutline /></div>
-                        <p>Subscription</p>
-                    </Link>
-
-                    <Link to={'/admin/users'} className="item">
+                    </Link>*/}
+       
+                    {/* <Link to={'/admin/users'} className="item">
                         <div className="icon"><IoPeopleOutline /></div>
                         <p>Users</p>
-                    </Link>
+                    </Link> */}
 
-                    <Link to={'/admin/game-request'} className="item">
+                    {/* <Link to={'/admin/game-request'} className="item">
                         <div className="icon"><IoHappyOutline /></div>
                         <p>Game Request</p>
-                    </Link>
+                    </Link> */}
 
                     <Link to={'/admin/banner'} className="item">
                         <div className="icon"><IoAperture /></div>
                         <p>Banners</p>
+                    </Link>
+
+                    <Link to={'/admin/event'} className="item">
+                        <div className="icon"><IoAperture /></div>
+                        <p>Events</p>
                     </Link>
 
                     <Link to={'/admin/settings'} className="item">

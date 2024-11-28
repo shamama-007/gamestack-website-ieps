@@ -5,6 +5,7 @@ const path = require("path");
 const { getRandomNumber } = require("../utils/utils");
 const Banner = require("../models/bannerModel");
 const fs = require('fs');
+const EventLogo = require("../models/eventLogoModel");
 
 // Admin Register
 exports.adminRegister = catchAsyncError(async (req, res, next) => {
@@ -111,6 +112,8 @@ exports.adminUpdatePassword = catchAsyncError(async (req, res, next) => {
     message: "Password update successfully",
   });
 });
+
+
 
 // Image Get Banner
 exports.getBannerImage = catchAsyncError(async (req, res, next) => {
@@ -225,5 +228,126 @@ exports.bannerImageDelete = catchAsyncError(async (req, res, next) => {
   res.status(200).json({
     status: true,
     message: "Banner delete successfully",
+  });
+});
+
+
+
+// ========================================
+
+
+// Image Get EventLogo
+exports.getEventLogo = catchAsyncError(async (req, res, next) => {
+  const event = await EventLogo.find();
+
+  res.status(200).json({
+    status: true,
+    event,
+  });
+});
+
+// Image Get Single Banner
+exports.getEventLogoImageSingle = catchAsyncError(async (req, res, next) => {
+  const { eventId } = req.params;
+
+  const event = await EventLogo.findById(eventId);
+
+  res.status(200).json({
+    status: true,
+    event,
+  });
+});
+
+// Image Upload Banner
+exports.eventLogoImage = catchAsyncError(async (req, res, next) => {
+  const { eventLogo } = req.files;
+  console.log(eventLogo);
+  const randNumber1 = getRandomNumber();
+  const randNumber2 = getRandomNumber();
+
+  if (!eventLogo) return res.status(200).json({ message: "some error" });
+
+  const array_of_allowed_file_types = ["image/png", "image/jpeg", "image/jpg"];
+  if (!array_of_allowed_file_types.includes(eventLogo.mimetype)) {
+    return res.status(200).json({
+      status: false,
+      message: "Invalid file type",
+    });
+  }
+
+  const allowed_file_size = 5;
+  if (eventLogo.size / (1024 * 1024) > allowed_file_size) {
+    return res.status(200).json({
+      status: false,
+      message: "File size upload 5MB",
+    });
+  }
+
+  if (!/^image/.test(eventLogo.mimetype)) return res.sendStatus(400);
+
+  let oneStepBack = path.join(__dirname, "../");
+  let imageExtension = eventLogo.name.split(".");
+  let extension = imageExtension[imageExtension.length - 1];
+
+  const result = await EventLogo.create({
+    imageLink:
+      process.env.IMAGE_BACKEND_DIRECTORY +
+      randNumber1 +
+      "_" +
+      randNumber2 +
+      "." +
+      extension,
+  });
+
+  if (result) {
+    eventLogo.mv(
+      oneStepBack +
+        process.env.IMAGE_BACKEND_DIRECTORY +
+        randNumber1 +
+        "_" +
+        randNumber2 +
+        "." +
+        extension
+    );
+  }
+
+  res.status(200).json({
+    status: true,
+    message: "Event logo upload successfully",
+  });
+});
+
+// Image Upload Banner Update
+exports.eventStatusUpdate = catchAsyncError(async (req, res, next) => {
+  const { eventId } = req.params;
+
+  const event = await EventLogo.findById(eventId);
+
+  event.status = req.body.status;
+
+  await event.save({ validateBeforeSave: false });
+
+  res.status(200).json({
+    status: true,
+    message: "Event status update successfully",
+    event,
+  });
+});
+
+// Image Upload Banner Delete
+exports.eventImageDelete = catchAsyncError(async (req, res, next) => {
+  const { eventId } = req.params;
+
+  const event = await EventLogo.findByIdAndDelete(eventId);
+  let oneStepBack = path.join(__dirname, "../");
+  fs.unlink(oneStepBack + event.imageLink, (err) => {
+    if (!err) {
+      console.log("Delete File successfully.");
+    }
+  });
+
+  res.status(200).json({
+    status: true,
+    message: "Event delete successfully",
   });
 });

@@ -35,6 +35,40 @@
     background-color: $primary-color;
 }
 
+.account {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    .menu-icon {
+        background: transparent;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: #FB751A;
+        // font-size: 22px;
+        border: 3px solid #FB751A;
+        border-radius: 30px;
+        // background-color: #FB751A;
+        padding: 10px 20px;
+        .icon {
+            font-size: 24px;
+            display: flex;
+        }
+        .icon-text {
+            font-size: 16px;
+        }
+
+        &:hover {
+            background-color: #FB751A;
+            color: white;
+        }
+    }
+}
+
 
 .navbar .burger-menu {
     display: none;

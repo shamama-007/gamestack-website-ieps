@@ -27,12 +27,10 @@ app.use('/api/uploads', express.static(path.join(__dirname, "./api/uploads")));
 
 // Route Imports
 const errorMiddleware = require("./middleware/error");
-const order = require("./routes/orderRoutes");
 const admin = require("./routes/adminRoutes");
 const user = require("./routes/userRoutes");
 
 // End Points
-app.use("/api/v1", order);
 app.use("/api/v1", admin);
 app.use("/api/v1", user);
 

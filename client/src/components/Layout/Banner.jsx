@@ -7,18 +7,40 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Pagination } from 'swiper/modules';
-import Banner1 from '../../assets/img/banner2.jpeg'
-import Banner2 from '../../assets/img/banner2.jpeg'
-import Banner3 from '../../assets/img/banner3.jpeg'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+
+import {
+    getBannerImageHandler,
+} from "../../reducers/imageUploadSlice";
+import Loader from '../Loader/Loader';
+
 const Banner = () => {
+    const dispatch = useDispatch();
+
+    const {
+        isLoadingBanner,
+        banners,
+    } = useSelector((state) => state.imageUpload);
+
+
+    useEffect(()=> {
+        dispatch(getBannerImageHandler());
+    }, [])
+    console.log(banners && banners)
+
+    
+
     return (
-        <div className="container pt-3 py-5 swiper-custom">
+        <>
+        {isLoadingBanner === true ? <Loader /> : <div className="container pt-3 py-5 swiper-custom">
             <Swiper pagination={true} modules={[Pagination]} className="banner">
-                <SwiperSlide><img src={Banner1} alt="Banner" /></SwiperSlide>
-                <SwiperSlide><img src={Banner2} alt="Banner" /></SwiperSlide>
-                <SwiperSlide><img src={Banner3} alt="Banner" /></SwiperSlide>
+                {banners.map((item, index) => {
+                    return <SwiperSlide key={index} ><img src={import.meta.env.VITE_BACKEND_URL + item.imageLink} alt="Banner" /></SwiperSlide>
+                })}
             </Swiper>
-        </div>
+        </div>}
+        </>
     )
 }
 

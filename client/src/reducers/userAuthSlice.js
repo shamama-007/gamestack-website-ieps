@@ -2,29 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Action Login Account (User)
-export const emailExistHandler = createAsyncThunk(
-  "emailExistHandler", // Action name
-  async ({ email }) => {
-    // try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_CLIENT_API}/api/Customer/GetOTP/${email}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    //   // Assuming the response contains the OTP or email existence info
-    console.log(response.data);
-    return response.data; // This will be passed to the reducer
-    // } catch (error) {
-    // console.error('Error fetching OTP:', error);
-    // }
-  }
-);
-
-// Action Login Account (User)
 export const loginUserHandler = createAsyncThunk(
   "loginUserHandler",
   async ({ userId, password }) => {
@@ -58,7 +35,6 @@ export const userAuthSlice = createSlice({
     success: null,
     auth: false,
     alert: false,
-    userExistMessage: '',
   },
   reducers: {
 
@@ -101,28 +77,6 @@ export const userAuthSlice = createSlice({
 
   },
   extraReducers: (builder) => {
-    // Email Exist (User) -- Send OTP
-    // Action Login Account (Admin)
-    builder.addCase(emailExistHandler.pending, (state, action) => {
-      state.isLoading = true;
-    });
-
-    builder.addCase(emailExistHandler.fulfilled, (state, action) => {
-      if (action.payload.code === "") {
-        state.userExistMessage = "Email is not registered";
-        state.formShowingStatus = false;
-      } else {
-        localStorage.setItem("user-code", action.payload.code);
-        state.formShowingStatus = true;
-        state.userData = action.payload;
-      }
-      state.isLoading = false;
-    });
-    builder.addCase(emailExistHandler.rejected, (state, action) => {
-      state.formShowingStatus = false;
-      state.isLoading = false;
-      state.message = action.payload.message;
-    });
 
     // Action Login Account (Salesman)
     builder.addCase(loginUserHandler.pending, (state, action) => {

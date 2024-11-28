@@ -21,6 +21,8 @@ const PlanComponent = () => {
                     })
                     }
                 </div>
+
+                <p className='notePlan text-center my-5'>We have 3 Packages based on Gamer’s appetite: Novice, Novice Plus, Pro. There will be a poster of our packages with a summary of each package below along with a Youtube video with an complete understanding on each package. Customers can compare package on on this page that help him identifying which one to pick for himself.</p>
             </div>
         </>
     )

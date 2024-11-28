@@ -15,12 +15,10 @@ import ProductDetail from './pages/ProductDetail';
 // User Auth
 import Dashboard from './pages/user/Dashboard';
 import Settings from './pages/user/Setting';
-import Subscription from './pages/user/Subscription';
 
 // Admin Auth
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminSettings from './pages/admin/AdminSetting';
-import AdminSubscription from './pages/admin/AdminSubscription';
 import AdminUsers from './pages/admin/AdminUser';
 import AdminGameRequest from './pages/admin/AdminGameRequest';
 import AdminBanner from './pages/admin/AdminBanner';
@@ -35,6 +33,11 @@ import TermAndCondition from './pages/TermAndCondition';
 import { UserAuthCheck } from './reducers/userAuthSlice';
 import AvailabelProduct from './pages/user/AvailableProduct';
 import UserGameSwap from './pages/user/UserGameSwap';
+import About from './pages/About';
+import Gift from './pages/Gift';
+import Events from './pages/Events';
+import AdminEventLogo from './pages/admin/AdminEventLogo';
+import AdminEventLogoUpdate from './pages/admin/AdminEventLogoUpdate';
 
 
 const App = () => {
@@ -64,6 +67,9 @@ const App = () => {
         <Route exact path="/plan" element={<Plan />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/search" element={<Search />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/gift-cards" element={<Gift />} />
+        <Route exact path="/events" element={<Events />} />
         <Route exact path="/product/:id" element={<ProductDetail />} />
         <Route exact path="/checkout/:id" element={<Checkout />} />
         <Route exact path="/terms_conditions" element={<TermAndCondition />} />
@@ -78,7 +84,6 @@ const App = () => {
         {/* User Protected Route */}
         <Route exact path="/user/dashboard" element={<Dashboard />} />
         <Route exact path="/user/settings" element={<Settings />} />
-        <Route exact path="/user/subscription" element={<Subscription />} />
         <Route exact path="/user/available-product" element={<AvailabelProduct />} />
         <Route exact path="/user/user-game-swap" element={<UserGameSwap />} />
 
@@ -92,11 +97,13 @@ const App = () => {
         <Route element={<ProtectedRouteAdmin />}>
           <Route exact path="/admin/dashboard" element={<AdminDashboard />} />
           <Route exact path="/admin/settings" element={<AdminSettings />} />
-          <Route exact path="/admin/subscription" element={<AdminSubscription />} />
           <Route exact path="/admin/users" element={<AdminUsers />} />
           <Route exact path="/admin/game-request" element={<AdminGameRequest />} />
           <Route exact path="/admin/banner" element={<AdminBanner />} />
           <Route exact path="/admin/banner/:bannerId" element={<AdminBannerUpdate />} />
+          <Route exact path="/admin/event" element={<AdminEventLogo />} />
+          <Route exact path="/admin/event/:eventId" element={<AdminEventLogoUpdate />} />
+          
         </Route>
 
         {/* Page Not Found */}

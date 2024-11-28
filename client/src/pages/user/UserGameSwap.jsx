@@ -80,7 +80,7 @@ const UserGameSwap = () => {
     // swapFormik Schema
     const swapFormik = useFormik({
         initialValues: {
-            queryId: "",
+            queryId: queryProductId,
             queryName: "",
             productCode: "",
         },
@@ -129,21 +129,6 @@ const UserGameSwap = () => {
 
                             <h4 className="subHeading">REQUEST</h4>
                             <div>
-                                <div className="flex-column">
-                                    <label>Product Code</label>
-                                </div>
-                                <div className="inputForm">
-                                    <UserPerson />
-                                    <input type="text" name="queryId"
-                                        onChange={swapFormik.handleChange}
-                                        value={swapFormik.values.queryId = queryProductId} className="input" />
-                                </div>
-                                {swapFormik.touched.queryId && swapFormik.errors.queryId ? (
-                                    <p className="error text-danger">
-                                        {swapFormik.errors.queryId}
-                                    </p>
-                                ) : null}
-
                                 <div className="flex-column">
                                     <label>Product Code</label>
                                 </div>

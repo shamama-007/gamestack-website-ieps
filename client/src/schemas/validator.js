@@ -69,6 +69,14 @@ export const bannerStatusSchema = Yup.object({
     .required("Please select your status"),
 });
 
+export const eventStatusSchema = Yup.object({
+  eventStatus: Yup.mixed()
+    .oneOf(["1", "0"])
+    .defined()
+    .required("Please select your status"),
+});
+
+
 // User Order Track Schema
 export const orderTrackSchema = Yup.object({
   orderId: Yup.string()
