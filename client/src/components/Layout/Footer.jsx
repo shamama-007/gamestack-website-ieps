@@ -15,20 +15,7 @@ const Footer = () => {
                             <p className="text-justify">Games.com Explore the ultimate gaming experience, whether you are a casual player or a pro. From reviews and tips to the latest releases, connect with gamers, discover new adventures, and elevate your gameplay!</p>
                         </div>
 
-                        <div className="col-xs-6 col-md-3">
-                            <h6>Categories</h6>
-                            <ul className="footer-links">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Adventure</a></li>
-                                <li><a href="#">Simulation</a></li>
-                                <li><a href="#">Sports</a></li>
-                                <li><a href="#">Horror</a></li>
-                                <li><a href="#">Battle Royale</a></li>
-                                <li><a href="#">Survival</a></li>
-                            </ul>
-                        </div>
-
-                        <div className="col-xs-6 col-md-3">
+                        <div className="col-xs-6 col-md-6">
                             <h6>Quick Links</h6>
                             <ul className="footer-links">
                                 <li><Link to="/">Home</Link></li>
@@ -47,19 +34,13 @@ const Footer = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 col-sm-6 col-xs-12">
-                            <p className="copyright-text">Copyright &copy; {new Date().getFullYear()} All Rights Reserved by
-                                <a href="#"> gamestack.com</a>
-                                
-                            </p>
-                            
+                            <p className="copyright-text">Copyright &copy; {new Date().getFullYear()} All Rights Reserved by <a href="#"> gamestack.com.pk</a></p>
                         </div>
 
                         <div className="col-md-4 col-sm-6 col-xs-12">
                             <ul className="social-icons">
-                                <li><a className="facebook" href="#"><IoLogoFacebook /></a></li>
-                                <li><a className="twitter" href="#"><IoLogoTwitter /></a></li>
-                                <li><a className="dribbble" href="#"><IoLogoInstagram /></a></li>
-                                <li><a className="linkedin" href="#"><IoLogoLinkedin /></a></li>
+                                <li><a className="facebook" href="https://www.facebook.com/share/1B7nDyidGb/" target="_blank"><IoLogoFacebook /></a></li>
+                                <li><a className="dribbble" href="https://www.instagram.com/gamestackpk?igsh=MTRwM3F6b29rOHp3Zg==" target="_blank"><IoLogoInstagram /></a></li>
                             </ul>
                         </div>
                     </div>

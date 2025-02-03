@@ -24,6 +24,15 @@ export const AdminLoginSchema = Yup.object({
   password: Yup.string().required("Please enter your password"),
 });
 
+
+// Contact Schema
+export const ContactSchema = Yup.object({
+  name: Yup.string().required("Please enter your name"),
+  email: Yup.string().email('Invalid email').required("Please enter your email"),
+  phone: Yup.string().required("Please enter your phone"),
+  message: Yup.string().required("Please enter your message"),
+});
+
 // Salesman Login Schema
 export const LoginSchema = Yup.object({
   userId: Yup.string().required("Please enter your salesman id"),
@@ -89,6 +98,7 @@ export const orderTrackSchema = Yup.object({
     .strict(true)
     .required("Please enter your phone number"),
 });
+
 export const orderSalemanCustomerSchema = Yup.object({
   customerArea: Yup.mixed().defined().required("Please select your customer Area"),
 });

@@ -30,7 +30,6 @@ const Home = ({ setProgress }) => {
         <>
 
             <Navbar />
-            <Banner />
 
             {/* Service Component - Start */}
             <ServiceComponent />
@@ -194,6 +193,9 @@ const Home = ({ setProgress }) => {
                 </div>
             </section> */}
             {/* <!-- Instrument Product Section - End --> */}
+
+            <Banner />
+
 
             <Footer />
         </>

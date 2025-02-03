@@ -1,0 +1,26 @@
+name: CI/CD Pipeline For GAME STACK
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          script: |
+            cd /var/www/game/
+            git pull origin master
+
+            npm install
+            pm2 restart all || pm2 start npm --name "node_server2" -- start
+
+            cd client
+            npm install -f
+            npm run build

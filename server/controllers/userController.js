@@ -1,6 +1,7 @@
 const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const User = require("../models/userModel");
+const Contact = require("../models/contactModel");
 const sendJWT = require("../utils/jwtSend");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
@@ -18,6 +19,7 @@ exports.register = catchAsyncError(async (req, res, next) => {
   const token = user.jwtAuthToken();
   res.status(200).json({ success: true, message: "Account create successfully", token });
 });
+
 
 // User Login
 exports.loginUser = catchAsyncError(async (req, res, next) => {
@@ -44,6 +46,28 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   user.password = undefined;
   sendJWT(user, 200, "Login successfully", res);
 });
+
+
+// User Contact
+exports.userContact = catchAsyncError(async (req, res, next) => {
+  const { name, email, phone, message } = req.body;
+
+  // Save the new contact
+  const user = new Contact({ name, email, phone, message });
+  await user.save();
+
+
+  sendEmail({
+    email: process.env.SMTP_MAIL,
+    subject: "Contact form submission",
+    message: `Name: ${name} \nEmail: ${email} \nPhone: ${phone} \nMessage: ${message}`
+  });
+
+
+  res.status(200).json({ success: true, message: "The form has been successfully submitted." });
+});
+
+
 
 // User Forgot Password
 exports.forgotPassword = catchAsyncError(async (req, res, next) => {
@@ -111,7 +135,7 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
 
   await user.save();
 
-  sendJWT(user, 200, '' ,res);
+  sendJWT(user, 200, '', res);
 });
 
 // User Get Single Data
@@ -140,7 +164,7 @@ exports.updatePassword = catchAsyncError(async (req, res, next) => {
   user.password = req.body.newPassword;
   await user.save();
 
-  sendJWT(user, 200, 'Password updated successfully' , res);
+  sendJWT(user, 200, 'Password updated successfully', res);
 });
 
 // User Update Profile

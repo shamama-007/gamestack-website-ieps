@@ -13,7 +13,7 @@ const sendEmail = async (options) => {
 
   const mailOptions = {
     form: process.env.SMTP_MAIL,
-    to: options.email,
+    to: process.env.SMTP_MAIL,
     subject: options.subject,
     text: options.message,
   };

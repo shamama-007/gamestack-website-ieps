@@ -26,7 +26,7 @@ const Banner = () => {
 
     useEffect(()=> {
         dispatch(getBannerImageHandler());
-    }, [])
+    }, [dispatch])
     console.log(banners && banners)
 
     
@@ -34,7 +34,7 @@ const Banner = () => {
     return (
         <>
         {isLoadingBanner === true ? <Loader /> : <div className="container pt-3 py-5 swiper-custom">
-            <Swiper pagination={true} modules={[Pagination]} className="banner">
+            <Swiper pagination={true} modules={[Pagination]} loop={true} className="banner">
                 {banners.map((item, index) => {
                     return <SwiperSlide key={index} ><img src={import.meta.env.VITE_BACKEND_URL + item.imageLink} alt="Banner" /></SwiperSlide>
                 })}

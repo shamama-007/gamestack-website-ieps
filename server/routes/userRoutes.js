@@ -6,6 +6,7 @@ const { isAuthenticatedUser, isAuthenticatedAdmin } = require("../middleware/aut
 const {
   register,
   loginUser,
+  userContact,
   logout,
   resetPassword,
   getUserDetail,
@@ -17,12 +18,16 @@ const {
   deleteUser,
   forgotPassword,
 } = require("../controllers/userController");
+const { contactRateLimiter } = require("../middleware/rateLimit");
 
 router.post("/user/register", register);
 
 router.post("/user/login", loginUser);
 
 // router.get("/user/logout", isAuthenticatedUser, logout);
+
+router.post("/user/contact", contactRateLimiter, userContact);
+
 
 router.post("/user/password/forgot", forgotPassword);
 

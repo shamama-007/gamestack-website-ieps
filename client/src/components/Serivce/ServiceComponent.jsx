@@ -5,12 +5,13 @@ import { BiSupport } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from "react-router-dom";
 
 AOS.init();
 const ServiceComponent = () => {
     return (
         <>
-            <section className="plan-container container">
+            <section className="plan-container container mt-5">
                 <div className="text-center pb-5">
                     <h2>OUR SERVICE</h2>
                     <h6>Boost Your Play with Our High-Powered Solutions!</h6>
@@ -31,7 +32,7 @@ const ServiceComponent = () => {
                             <div className="card__content">
                                 <h3>EpicZone</h3>
                                 <p>Your ultimate gaming hub, where players level up their skills, unlock exclusive content, and connect with a community of legends. Dive into epic experiences and dominate the game!</p>
-                                <a href="#">Read More</a>
+                                <Link to="/plan">Read More</Link>
                             </div>
                         </div>
                     </div>
@@ -45,7 +46,7 @@ const ServiceComponent = () => {
                             <div className="card__content">
                                 <h3>Support 24/7</h3>
                                 <p>We&apos;re here around the clock to keep you in the game. Whether it&apos;s troubleshooting, tips, or advice, our team is ready to assist you anytime, day or night!</p>
-                                <a href="#">Read More</a>
+                                <Link to="/plan">Read More</Link>
                             </div>
                         </div>
                     </div>
@@ -59,7 +60,7 @@ const ServiceComponent = () => {
                             <div className="card__content">
                                 <h3>PowerPlay</h3>
                                 <p>Supercharge your gaming experience with our premium solutions.</p>
-                                <a href="#">Read More</a>
+                                <Link to="/plan">Read More</Link>
                             </div>
                         </div>
                     </div>

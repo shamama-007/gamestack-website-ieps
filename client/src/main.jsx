@@ -7,14 +7,17 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ScrollToTop from "./scroll-to-top.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
-    <Provider store={store}>
-      <ToastContainer
-        theme="dark"
-      />
-      <App />
-    </Provider>
+    <ScrollToTop>
+      <Provider store={store}>
+        <ToastContainer
+          theme="dark"
+        />
+        <App />
+      </Provider>
+    </ScrollToTop>
   </Router>
 );
