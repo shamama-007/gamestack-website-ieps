@@ -48,7 +48,6 @@ const AdminLogin = () => {
         },
         validationSchema: AdminLoginSchema,
         onSubmit: (values, action) => {
-            console.log(values);
             dispatch(loginAdminHandler(values));
             action.resetForm();
         },

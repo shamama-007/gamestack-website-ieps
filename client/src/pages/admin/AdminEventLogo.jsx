@@ -64,7 +64,6 @@ const AdminEventLogo = () => {
     const bannerFormik = useFormik({
         initialValues: {},
         onSubmit: (values) => {
-            console.log(values);
             dispatch(eventLogoUploadHandler(values));
             setImage(null);
         },

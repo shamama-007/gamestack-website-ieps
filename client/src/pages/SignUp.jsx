@@ -46,7 +46,6 @@ const SignUp = () => {
         },
         // validationSchema: RegisterSchema,
         onSubmit: (values, action) => {
-            console.log(values);
             // dispatch(registerUserHandler(values));
             action.resetForm();
         },

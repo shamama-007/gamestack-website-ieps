@@ -22,4 +22,5 @@ jobs:
             cd ../server && npm install -f && cd ..
             
             pm2 restart all || pm2 start npm --name "node_server2" -- start
+            pm2 save
             

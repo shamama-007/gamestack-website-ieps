@@ -8,8 +8,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 const CheckoutComponent = (prop) => {
   const [isAuth, setIsAuth] = useState(true);
-  console.log(prop)
-
   return (
     <div className="container my-5">
       <h2 className="top-checkout-heading" >Checkout</h2>

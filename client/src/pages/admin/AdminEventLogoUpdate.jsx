@@ -50,7 +50,6 @@ const AdminBannerUpdate = () => {
 
         dispatch(clearError());
 
-        console.log(eventDetail)
     }, [dispatch, goBack, alert, message, success, navigate]);
 
     useEffect(() => {

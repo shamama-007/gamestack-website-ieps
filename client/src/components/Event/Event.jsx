@@ -80,7 +80,7 @@ const EventComponent = () => {
                         }}
                         modules={[Autoplay, Navigation]}
                     >
-                        {events.map(item =>  
+                        {events && events.map(item =>  
                             <SwiperSlide key={item._id}>
                                 <EventsCard {...item} />
                             </SwiperSlide>

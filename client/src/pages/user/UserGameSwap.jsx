@@ -30,7 +30,6 @@ const UserGameSwap = () => {
                 }
             );
             const result = await response.json();
-            console.log(result)
             setCustomerGetProductDetail(result)
         };
 

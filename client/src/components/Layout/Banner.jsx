@@ -27,10 +27,6 @@ const Banner = () => {
     useEffect(()=> {
         dispatch(getBannerImageHandler());
     }, [dispatch])
-    console.log(banners && banners)
-
-    
-
     return (
         <>
         {isLoadingBanner === true ? <Loader /> : <div className="container pt-3 py-5 swiper-custom">

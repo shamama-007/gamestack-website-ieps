@@ -25,7 +25,6 @@ const ContactComponent = () => {
         },
         validationSchema: ContactSchema,
         onSubmit: async (values, action) => {
-            console.log(values);
             const { success, message, retryAfter } = await postContact(values)
             if (success == true) {
                 toast.success(message)

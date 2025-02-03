@@ -50,7 +50,6 @@ const SignIn = () => {
     },
     validationSchema: LoginSchema,
     onSubmit: (values, action) => {
-      console.log(values);
       dispatch(loginUserHandler(values));
       action.resetForm();
     },

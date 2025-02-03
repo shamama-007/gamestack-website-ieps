@@ -64,7 +64,6 @@ const AdminBanner = () => {
     const bannerFormik = useFormik({
         initialValues: {},
         onSubmit: (values) => {
-            console.log(values);
             dispatch(bannerImageUploadHandler(values));
             setImage(null);
         },
