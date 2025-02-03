@@ -18,9 +18,8 @@ jobs:
             cd /var/www/game/
             git pull origin master
 
-            npm install
+            cd client && npm install -f && npm run build
+            cd ../server && npm install -f && cd ..
+            
             pm2 restart all || pm2 start npm --name "node_server2" -- start
-
-            cd client
-            npm install -f
-            npm run build
+            
