@@ -6,8 +6,55 @@ import { PiNumberCircleOneLight, PiNumberCircleTwoLight } from "react-icons/pi";
 import { IoCheckmarkCircle, IoLockClosed } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import { CheckoutSchema } from "../../schemas/validator";
+import { toast } from "react-toastify";
+
+const postCheckout = async (data) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/checkout`, {
+    method: "POST",
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  return await response.json();
+}
+
 const CheckoutComponent = (prop) => {
   const [isAuth, setIsAuth] = useState(true);
+  // Login Schema
+  const contactFormik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      phone: "",
+      country: "",
+      province: "",
+      city: "",
+      address: "",
+      zipCode: "",
+      agreement: false,
+    },
+    validationSchema: CheckoutSchema,
+    onSubmit: async (values, action) => {
+      console.log(values)
+      const postData = {
+        ...values,
+        subscriptionPlan: prop.planName,
+        subscriptionRate: Number(prop.price),
+        subscriptionRefund: Number(prop.refund),
+        subscriptionTotal: Number(prop.refund) + Number(prop.price),
+      }
+      const { success, message, retryAfter } = await postCheckout(postData)
+      if (success == true) {
+          toast.success(message)
+      } else {
+          toast.error(message + ' ' + retryAfter)
+      }
+      action.resetForm();
+    },
+  });
+
+
   return (
     <div className="container my-5">
       <h2 className="top-checkout-heading" >Checkout</h2>
@@ -46,27 +93,40 @@ const CheckoutComponent = (prop) => {
                   <div className="checkout-heading mb-3">
                     <div className="icon p-0 m-0">
                       <PiNumberCircleOneLight />
-                      {/* <IoCheckmarkCircle /> */}
                     </div>
                     <h4>Billing address</h4>
                   </div>
 
-                  <form>
+                  <form onSubmit={contactFormik.handleSubmit}>
                     <div className="row mb-4 px-0">
                       <div className="col-md-6 mb-sm-4 mb-md-0 mb-4">
                         <div className="inputForm">
-                          <input type="text" className="input m-0" placeholder="First name" />
+                          <input type="text" onChange={contactFormik.handleChange}
+                            value={contactFormik.values.firstName} name="firstName" className="input m-0" placeholder="First name" />
                         </div>
+                        {contactFormik.touched.firstName && contactFormik.errors.firstName ? (
+                          <span className="text-danger">{contactFormik.errors.firstName}</span>
+                        ) : null}
                       </div>
                       <div className="col-md-6">
                         <div className="inputForm">
-                          <input type="text" className="input m-0" placeholder="Last name" />
+                          <input type="text" onChange={contactFormik.handleChange}
+                            value={contactFormik.values.lastName} name="lastName" className="input m-0" placeholder="Last name" />
                         </div>
+                        {contactFormik.touched.lastName && contactFormik.errors.lastName ? (
+                          <span className="text-danger">{contactFormik.errors.lastName}</span>
+                        ) : null}
                       </div>
                     </div>
 
-                    <div className="inputForm mb-4">
-                      <input type="text" className="input m-0" placeholder="Phone number" />
+                    <div className="mb-4">
+                      <div className="inputForm">
+                        <input type="number" onChange={contactFormik.handleChange}
+                          value={contactFormik.values.phone} name="phone" className="input m-0" placeholder="Phone number" />
+                      </div>
+                      {contactFormik.touched.phone && contactFormik.errors.phone ? (
+                        <span className="text-danger">{contactFormik.errors.phone}</span>
+                      ) : null}
                     </div>
 
 
@@ -77,46 +137,76 @@ const CheckoutComponent = (prop) => {
                         // onChange={orderFormik.handleChange}
                         // value={orderFormik.values.country}
                         className="select m-0"
+                        onChange={contactFormik.handleChange}
+                        value={contactFormik.values.country = "Pakistan"}
                       >
-                        <option disabled>Select country</option>
-                        {countryList.getData().map((item) => {
+                        <option selected value="Pakistan">Pakistan</option>
+                        {/* <option disabled>Select country</option> */}
+                        {/* {countryList.getData().map((item) => {
                           return (
                             <option value={item.name} key={item.code}>
                               {item.name}
                             </option>
                           );
-                        })}
+                        })} */}
                       </select>
                     </div>
 
-                    <div className="row mb-4 px-0">
-                      <div className="col-md-6 mb-sm-4 mb-md-0 mb-4">
-                        <div className="inputForm">
-                          <input type="text" className="input m-0" placeholder="Region/Province" />
+                    <div className="row px-0">
+                      <div className="col-md-6 mb-sm-4 mb-md-0">
+                        <div className="mb-4">
+                          <div className="inputForm">
+                            <input type="text" onChange={contactFormik.handleChange}
+                              value={contactFormik.values.province} name="province" className="input m-0" placeholder="Region/Province" />
+                          </div>
+
+                          {contactFormik.touched.province && contactFormik.errors.province ? (
+                            <span className="text-danger">{contactFormik.errors.province}</span>
+                          ) : null}
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="inputForm">
-                          <input type="text" className="input m-0" placeholder="City" />
+                        <div className="mb-4">
+                          <div className="inputForm">
+                            <input type="text" onChange={contactFormik.handleChange}
+                              value={contactFormik.values.city} name="city" className="input m-0" placeholder="City" />
+                          </div>
+
+                          {contactFormik.touched.city && contactFormik.errors.city ? (
+                            <span className="text-danger">{contactFormik.errors.city}</span>
+                          ) : null}
                         </div>
                       </div>
                     </div>
 
 
                     <div className="row px-0">
-                      <div className="col-md-6 mb-sm-4 mb-md-0 mb-4">
-                        <div className="inputForm">
-                          <input type="text" className="input m-0" placeholder="Street address" />
+                      <div className="col-md-6 mb-sm-4 mb-md-0">
+                        <div className="mb-4">
+                          <div className="inputForm">
+                            <input type="text" onChange={contactFormik.handleChange}
+                              value={contactFormik.values.address} name="address" className="input m-0" placeholder="Street address" />
+                          </div>
+
+                          {contactFormik.touched.address && contactFormik.errors.address ? (
+                            <span className="text-danger">{contactFormik.errors.address}</span>
+                          ) : null}
                         </div>
                       </div>
                       <div className="col-md-6">
-                        <div className="inputForm">
-                          <input type="text" className="input m-0" placeholder="Zip code" />
+                        <div className="mb-4">
+                          <div className="inputForm">
+                            <input type="text" onChange={contactFormik.handleChange}
+                              value={contactFormik.values.zipCode} name="zipCode" className="input m-0" placeholder="Zip code" />
+                          </div>
+                          {contactFormik.touched.zipCode && contactFormik.errors.zipCode ? (
+                            <span className="text-danger">{contactFormik.errors.zipCode}</span>
+                          ) : null}
                         </div>
                       </div>
                     </div>
 
-                    <div className="row px-0 mt-3 term-condition">
+                    <div className="row px-0 term-condition">
                       <div className="terms-content">
                         <div className="terms-points">
                           <p className="point">Terms and condition</p>
@@ -169,29 +259,36 @@ const CheckoutComponent = (prop) => {
 
 
                           <label className="cl-checkbox">
-                            <input type="checkbox" />
+                            <input
+                              type="checkbox"
+                              name="agreement"
+                              checked={contactFormik.values.agreement} // Use checked instead of value
+                              onChange={contactFormik.handleChange}
+                              onBlur={contactFormik.handleBlur} // Ensures validation triggers on blur
+                            />
                             <span>I agree term and condition</span>
-
                           </label>
 
                         </div>
+                        {contactFormik.touched.agreement && contactFormik.errors.agreement ? (
+                          <span className="text-danger">{contactFormik.errors.agreement}</span>
+                        ) : null}
 
                       </div>
                     </div>
 
 
 
-                    <button className="button-submit button-submit-black">Continue</button>
+                    <button type="submit" className="button-submit button-submit-black">Checkout</button>
 
                   </form>
                 </div>
 
                 {/* Payment Method */}
-                <div className="payment-method">
+                {/* <div className="payment-method">
                   <div className="checkout-heading mb-3">
                     <div className="icon p-0 m-0">
                       <PiNumberCircleTwoLight />
-                      {/* <IoCheckmarkCircle /> */}
                     </div>
                     <h4>Payment</h4>
                   </div>
@@ -231,7 +328,7 @@ const CheckoutComponent = (prop) => {
                     </div>
                   </div>
                   <p className="secure-payment-text d-flex justify-content-start flex-row align-items-center"><IoLockClosed /> Encrypted and secure payments</p>
-                </div>
+                </div> */}
               </>
             }
 

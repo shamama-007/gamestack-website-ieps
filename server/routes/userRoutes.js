@@ -7,6 +7,7 @@ const {
   register,
   loginUser,
   userContact,
+  userCheckout,
   logout,
   resetPassword,
   getUserDetail,
@@ -28,6 +29,7 @@ router.post("/user/login", loginUser);
 
 router.post("/user/contact", contactRateLimiter, userContact);
 
+router.post("/user/checkout", contactRateLimiter, userCheckout);
 
 router.post("/user/password/forgot", forgotPassword);
 

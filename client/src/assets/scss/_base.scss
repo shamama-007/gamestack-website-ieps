@@ -12,10 +12,10 @@ body {
   font-family: 'Mulish', sans-serif;
   -webkit-font-smoothing: antialiased;
   background: #0f0f0f;
-  // background-image: linear-gradient(45deg, #000000, rgba(0, 0, 0, 0.294)), url('../img/hero.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  scroll-behavior: smooth;
 }
 
 body  {

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoCloseOutline, IoPerson, IoSearch } from "react-icons/io5";
 import SearchBar from '../Search/Search';
@@ -6,6 +6,21 @@ import Logo from "../../assets/img/logo.png"
 const Navbar = () => {
     const [menuToggle, setMenuToggle] = useState(false);
     const [searchToggle, setSearchToggle] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // Function to track scroll position
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 100) { // Adjust scroll value as needed
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const onSearchHandler = () => {
         setSearchToggle(!searchToggle);
@@ -15,7 +30,10 @@ const Navbar = () => {
 
     return (
         <div className="custom-container d-flex justify-content-center align-items-center">
-            <nav className="navbar">
+
+
+
+            <nav className={`navbar ${isScrolled ? "scrolled" : ""}`} style={{ position: isScrolled ? "" : "sticky" }}>
                 {/* <Link to="/"><h3 className='logo'>GAMES<span className="fs-6">.com</span></h3></Link> */}
                 <Link to="/"> <img src={Logo} alt="" /> </Link>
                 <div className="menu">
@@ -43,7 +61,6 @@ const Navbar = () => {
                     <div className="burger line1"></div>
                     <div className="burger line2"></div>
                     <div className="burger line3"></div>
-
                 </div>
             </nav>
 
@@ -77,6 +94,24 @@ const Navbar = () => {
 
             {/* Search Bar */}
             <SearchBar searchToggle={searchToggle} />
+
+            <style jsx>{`
+                    .navbar {
+                        position: fixed;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                        background: transparent;
+                        transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                        z-index: 1000;
+                    }
+                    .navbar.scrolled {
+                        background:rgba(22, 22, 22, 0.71);
+                        backdrop-filter: blur(5px);
+                        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                        transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                    }`}
+            </style>
 
         </div>
     )

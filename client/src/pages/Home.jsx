@@ -30,6 +30,14 @@ const Home = ({ setProgress }) => {
         <>
 
             <Navbar />
+            
+            {/* Banner Component - Start */}
+            <Banner />
+            {/* Banner Component - Start */}
+
+            {/* Plan Component - Start */}
+            <PlanComponent />
+            {/* Plan Component - End  */}
 
             {/* Service Component - Start */}
             <ServiceComponent />
@@ -190,11 +198,6 @@ const Home = ({ setProgress }) => {
             </section> */}
             {/* <!-- Instrument Product Section - End --> */}
 
-            <Banner />
-
-            {/* Plan Component - Start */}
-            <PlanComponent />
-            {/* Plan Component - End  */}
 
 
             <Footer />

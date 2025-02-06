@@ -2,6 +2,7 @@ const ErrorHandler = require("../utils/errorhandler");
 const catchAsyncError = require("../middleware/catchAsyncError");
 const User = require("../models/userModel");
 const Contact = require("../models/contactModel");
+const Checkout = require("../models/checkoutModel");
 const sendJWT = require("../utils/jwtSend");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
@@ -65,6 +66,37 @@ exports.userContact = catchAsyncError(async (req, res, next) => {
 
 
   res.status(200).json({ success: true, message: "The form has been successfully submitted." });
+});
+
+
+// User Checkout
+exports.userCheckout = catchAsyncError(async (req, res, next) => {
+  const user = new Checkout(req.body);
+  const result = await user.save();
+  if (!result) {
+    return res.status(200).json({ success: false, message: "The form has not been successfully submitted." });
+  }
+  sendEmail({
+    email: process.env.SMTP_MAIL,
+    subject: "Checkout Form Submission",
+    message: `
+    First Name: ${req.body.firstName} 
+    Last Name: ${req.body.lastName} 
+    Phone: ${req.body.phone} 
+    Country: ${req.body.country} 
+    Province: ${req.body.province} 
+    City: ${req.body.city} 
+    Address: ${req.body.address} 
+    ZIP Code: ${req.body.zipCode} 
+    Agreement: ${req.body.agreement ? "Accepted" : "Not Accepted"}
+    Subscription Plan: ${req.body.subscriptionPlan} 
+    Subscription Rate: ${req.body.subscriptionRate} 
+    Subscription Refund: ${req.body.subscriptionRefund} 
+    Subscription Total: ${req.body.subscriptionTotal}
+    `,
+});
+
+  res.status(200).json({ success: true, message: "Your request has been successfully submitted." });
 });
 
 

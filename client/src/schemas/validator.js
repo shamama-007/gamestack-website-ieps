@@ -33,6 +33,20 @@ export const ContactSchema = Yup.object({
   message: Yup.string().required("Please enter your message"),
 });
 
+// Checkout Schema
+export const CheckoutSchema = Yup.object({
+  firstName: Yup.string().required("Please enter your first name"),
+  lastName: Yup.string().required("Please enter your last name"),
+  phone: Yup.string().required("Please enter your phone"),
+  country: Yup.string().required("Please enter your country"),
+  province: Yup.string().required("Please enter your province"),
+  city: Yup.string().required("Please enter your city"),
+  address: Yup.string().required("Please enter your address"),
+  zipCode: Yup.number().required("Please enter your zip code"),
+  agreement: Yup.bool().oneOf([true], "You must agree to terms and conditions"),
+
+});
+
 // Salesman Login Schema
 export const LoginSchema = Yup.object({
   userId: Yup.string().required("Please enter your salesman id"),

@@ -15,7 +15,7 @@ const postContact = async (data) => {
 
 const ContactComponent = () => {
 
-    // Login Schema
+    // Contact Schema
     const loginFormik = useFormik({
         initialValues: {
             name: "",
