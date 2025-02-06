@@ -30,9 +30,9 @@ const ServiceComponent = () => {
                                 </div>
                             </div>
                             <div className="card__content">
-                                <h3>EpicZone</h3>
+                                <h3>About Games</h3>
                                 <p>Your ultimate gaming hub, where players level up their skills, unlock exclusive content, and connect with a community of legends. Dive into epic experiences and dominate the game!</p>
-                                <Link to="/plan">Read More</Link>
+                                <Link to="/about">Read More</Link>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@ const ServiceComponent = () => {
                             <div className="card__content">
                                 <h3>Support 24/7</h3>
                                 <p>We&apos;re here around the clock to keep you in the game. Whether it&apos;s troubleshooting, tips, or advice, our team is ready to assist you anytime, day or night!</p>
-                                <Link to="/plan">Read More</Link>
+                                <Link to="/contact">Read More</Link>
                             </div>
                         </div>
                     </div>
@@ -58,9 +58,9 @@ const ServiceComponent = () => {
                                 <div className="card__icon-bx"><IoGameControllerOutline /></div>
                             </div>
                             <div className="card__content">
-                                <h3>PowerPlay</h3>
+                                <h3>About Events & Gift</h3>
                                 <p>Supercharge your gaming experience with our premium solutions.</p>
-                                <Link to="/plan">Read More</Link>
+                                <Link to="/plan" style={{marginTop:"-30px"}} >Read More</Link>
                             </div>
                         </div>
                     </div>

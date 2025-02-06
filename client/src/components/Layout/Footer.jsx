@@ -1,4 +1,4 @@
-import { IoLogoFacebook, IoLogoTwitter, IoLogoLinkedin, IoLogoInstagram } from "react-icons/io5";
+import { IoLogoFacebook, IoLogoInstagram } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/img/logo.png"
 
@@ -12,7 +12,7 @@ const Footer = () => {
                     <div className="row">
                         <div className="col-sm-12 col-md-6">
                             <h6>About</h6>
-                            <p className="text-justify">Games.com Explore the ultimate gaming experience, whether you are a casual player or a pro. From reviews and tips to the latest releases, connect with gamers, discover new adventures, and elevate your gameplay!</p>
+                            <p className="text-justify">gamestack.com.pk Explore the ultimate gaming experience, whether you are a casual player or a pro. From reviews and tips to the latest releases, connect with gamers, discover new adventures, and elevate your gameplay!</p>
                         </div>
 
                         <div className="col-xs-6 col-md-6">

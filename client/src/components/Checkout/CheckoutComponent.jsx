@@ -60,7 +60,7 @@ const CheckoutComponent = (prop) => {
                       </div>
                       <div className="col-md-6">
                         <div className="inputForm">
-                          <input type="password" className="input m-0" placeholder="Last name" />
+                          <input type="text" className="input m-0" placeholder="Last name" />
                         </div>
                       </div>
                     </div>
@@ -206,7 +206,7 @@ const CheckoutComponent = (prop) => {
                               <div className="icon">
                                 <EasypaisaIcon />
                               </div>
-                              <span>Easypaisa</span>
+                              <span style={{marginLeft: "8px"}} >Easypaisa</span>
                             </div>
                           </label>
                           <div className="tab-content">

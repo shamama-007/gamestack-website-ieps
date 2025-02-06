@@ -152,8 +152,8 @@ const ContactComponent = () => {
                                 <div className="contact-info-text">
                                     <h2>Contact Me</h2>
                                     <span>+92 21 34912160</span>
-                                    <span>+92333-7542778</span>
-                                    <span>+92333-0372982</span>
+                                    <span>+92 333 7542778</span>
+                                    <span>+92 333 0372982</span>
                                 </div>
                             </div>
                         </div>
