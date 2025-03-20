@@ -22,12 +22,6 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const onSearchHandler = () => {
-        setSearchToggle(!searchToggle);
-        setMenuToggle(false);
-    }
-
-
     return (
         <div className="custom-container d-flex justify-content-center align-items-center">
 
@@ -46,11 +40,6 @@ const Navbar = () => {
                     {/* <Link to="/signup">SIGN UP</Link> */}
                 </div>
                 <div className="account">
-                    <button to="/signin" className="menu-icon" onClick={onSearchHandler}>
-                        <div className="icon"><IoSearch /></div>
-                        <div className="icon-text"><span>SEARCH GAMES</span></div>
-                    </button>
-
                     <Link to="/signin" className="menu-icon">
                         <div className="icon"><IoPerson /></div>
                         <div className="icon-text"><span>SIGN IN</span></div>
@@ -67,7 +56,7 @@ const Navbar = () => {
             {/* Mobile Response */}
             <div className={`side-menu-mobile ${menuToggle === true ? 'active' : ''}`}>
                 <div className="header-logo">
-                    <Link to="/"><h3 className='logo-mobile'>GAMES<span className="fs-6">.com</span></h3></Link>
+                    <div></div>
                     <span className="close-menu-mobile" onClick={() => setMenuToggle(!menuToggle)} ><IoCloseOutline /></span>
                 </div>
 
@@ -79,17 +68,7 @@ const Navbar = () => {
                     <Link to="/signup">SIGN UP</Link>
                 </div>
 
-                <div className="account account-mobile" >
-                    <button to="/signin" className="menu-icon" onClick={onSearchHandler}>
-                        <div className="icon"><IoSearch /></div>
-                        <div className="icon-text"><span>SEARCH GAMES</span></div>
-                    </button>
-
-                    <Link to="/signin" className="menu-icon">
-                        <div className="icon"><IoPerson /></div>
-                        <div className="icon-text"><span>SIGN IN</span></div>
-                    </Link>
-                </div>
+               
             </div>
 
             {/* Search Bar */}

@@ -32,12 +32,12 @@ const AdminDashboardSidebar = ({ children }) => {
 
             <header className='dashboard-panel-container'>
                 <nav className="panel">
-                    <Link to="/" className=" panel-logo">
+                    <div className=" panel-logo">
                         <img src={Logo} />
                         <div className="panel-burger" onClick={() => setIsToggle(!isToggle)}>
                             <IoMenu />
                         </div>
-                    </Link>
+                    </div>
 
                     <div className="panel-account">
                         <div className="panel-account-container" onClick={() => setProfileOption(!profileOption)}>
@@ -58,12 +58,11 @@ const AdminDashboardSidebar = ({ children }) => {
                             </div>
 
                             <div className="profile-options-menu">
-
-                                <Link to={"/admin/dashboard"} className="item">
-                                    <div className="icon"><IoSpeedometerOutline /></div>
-                                    <div className="text">Dashboard</div>
+                                <Link to={"/admin/banner"} className="item">
+                                    <div className="icon"><IoAperture /></div>
+                                    <div className="text">Banner</div>
                                 </Link>
-                                
+
                                 <Link to={"/admin/settings"} className="item">
                                     <div className="icon"><IoSettingsOutline /></div>
                                     <div className="text">Setting</div>
@@ -72,7 +71,6 @@ const AdminDashboardSidebar = ({ children }) => {
                                     <div className="icon"><IoLogOutOutline /></div>
                                     <div className="text">Logout</div>
                                 </Link>
-
                             </div>
 
                         </div>

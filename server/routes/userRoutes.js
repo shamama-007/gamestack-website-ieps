@@ -8,6 +8,7 @@ const {
   loginUser,
   userContact,
   userCheckout,
+  userGameRequest,
   logout,
   resetPassword,
   getUserDetail,
@@ -30,6 +31,12 @@ router.post("/user/login", loginUser);
 router.post("/user/contact", contactRateLimiter, userContact);
 
 router.post("/user/checkout", contactRateLimiter, userCheckout);
+
+/*
+If the game button (Request) is clicked, an email will be sent to the website owner with 
+the customer's details.
+*/
+router.post("/user/game-request", contactRateLimiter, userGameRequest);
 
 router.post("/user/password/forgot", forgotPassword);
 

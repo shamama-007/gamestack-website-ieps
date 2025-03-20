@@ -94,9 +94,41 @@ exports.userCheckout = catchAsyncError(async (req, res, next) => {
     Subscription Refund: ${req.body.subscriptionRefund} 
     Subscription Total: ${req.body.subscriptionTotal}
     `,
-});
+  });
 
   res.status(200).json({ success: true, message: "Your request has been successfully submitted." });
+});
+
+// User Game Request
+exports.userGameRequest = catchAsyncError(async (req, res, next) => {
+  sendEmail({
+    email: process.env.SMTP_MAIL,
+    subject: "User Game Request Submission",
+    message: `
+      **User Game Request Details**
+  
+      Request Type     : ${req.body.reqType}
+      Customer Stock   : ${req.body.customerStock}
+      Game Category    : ${req.body.gameCategory}
+      In Hand Stock    : ${req.body.inHandStock}
+  
+      **Account Information**
+      Ac Name          : ${req.body.acName}
+      City            : ${req.body.city} (${req.body.cityCode})
+  
+      **Contact Details**
+      Email           : ${req.body.email}
+      Mobile No       : ${req.body.mobileNo}
+  
+      **Identification & Subscription**
+      CNIC Expiry     : ${req.body.cnicExpiry}
+      Package         : ${req.body.package} (Code: ${req.body.packageCode})
+  
+      Submission Date : ${new Date().toLocaleString()}
+    `,
+  });
+
+  res.status(200).json({ success: true, message: "Your  game request has been successfully submitted." });
 });
 
 

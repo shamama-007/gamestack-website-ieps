@@ -5,14 +5,18 @@ import GameCard from "../../components/ProductComponent/GameCard";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Loader from "../../components/Loader/Loader";
+
 const AvailabelProduct = () => {
   const { token } = useSelector((state) => state.userAuth);
+  const [userDetail, setUserDetail] = useState(null);
+
   const [gameProductStatus, setGameProductStatus] = useState(false);
   const [gameProduct, setGameProduct] = useState([]);
   const [gameProductIsLoading, setGameProductIsLoading] = useState(true);
 
   const [singleCard, setSingleCard] = useState(null);
   const [singleCardStatus, setSingleCardStatus] = useState(false);
+
 
   useEffect(() => {
     const getGameProduct = async () => {
@@ -32,14 +36,31 @@ const AvailabelProduct = () => {
     };
 
     getGameProduct();
+    getUserDetail();
+
   }, []);
+
+  const getUserDetail = async () => {
+    const response = await fetch(
+      `${import.meta.env.VITE_CLIENT_API}/api/Customer/GetDetail`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    setUserDetail(result);
+  };
+
 
 
   const handleOnSelect = (item) => {
     setSingleCard([item]);
     setSingleCardStatus(true);
     setGameProductStatus(false);
-    
+
   };
 
 
@@ -54,10 +75,7 @@ const AvailabelProduct = () => {
     return (
       <>
         <span style={{ display: "block", textAlign: "left" }}>
-          id: {item.id}
-        </span>
-        <span style={{ display: "block", textAlign: "left" }}>
-          name: {item.name}
+          {item.name}
         </span>
       </>
     );
@@ -67,10 +85,13 @@ const AvailabelProduct = () => {
     return {
       id: item.productCode,
       name: item.productName,
+      reqType: item.reqType,
+      customerStock: item.customerStock,
+      gameCategory: item.gameCategory,
+      inHandStock: item.inHandStock,
+      userDetail: userDetail
     };
   });
-
-
 
   return (
     <DashboardSidebar>
@@ -90,6 +111,7 @@ const AvailabelProduct = () => {
                 border: "2px solid #FB751A",
                 backgroundColor: "#161616",
                 color: "white",
+                hoverBackgroundColor: "#333",
               }}
             />
           </div>

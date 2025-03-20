@@ -40,7 +40,7 @@ const Settings = () => {
                     <div className="inputForm">
                     <FiHash style={{ fill: 'white', fontSize: '24px' }} />
 
-                        <input type="text" className="input" readOnly value={data && data.userId} placeholder="Enter your Name" />
+                        <input type="text" className="input" readOnly value={data && data.userId} />
                     </div>
 
                     <div className="flex-column">
@@ -49,7 +49,7 @@ const Settings = () => {
                     <div className="inputForm">
                         <IoPerson style={{ fill: 'white', fontSize: '24px' }} />
 
-                        <input type="email" className="input" readOnly value={data && data.name} placeholder="Enter your Bio" />
+                        <input type="text" className="input" readOnly value={data && data.name} />
                     </div>
 
 
@@ -59,7 +59,7 @@ const Settings = () => {
                     <div className="inputForm">
                         <IoMailOutline style={{ fill: 'white', fontSize: '24px' }} />
 
-                        <input type="email" className="input" readOnly value={userDetail && userDetail.email} placeholder="Enter your Bio" />
+                        <input type="email" className="input" readOnly value={userDetail && userDetail.email} />
                     </div>
 
                     <div className="flex-column">
@@ -68,7 +68,7 @@ const Settings = () => {
                     <div className="inputForm">
                         <IoCallOutline style={{ fill: 'white', fontSize: '24px' }} />
 
-                        <input type="email" className="input" readOnly value={userDetail && userDetail.mobileNo} placeholder="Enter your Bio" />
+                        <input type="text" className="input" readOnly value={userDetail && userDetail.mobileNo} />
                     </div>
 
 
@@ -77,7 +77,7 @@ const Settings = () => {
                     </div>
                     <div className="inputForm">
                         <IoBusinessOutline style={{ fill: 'white', fontSize: '24px' }} />
-                        <input type="email" className="input" readOnly value={userDetail && userDetail.city} placeholder="Enter your Bio" />
+                        <input type="text" className="input" readOnly value={userDetail && userDetail.city} />
                     </div>
 
 
@@ -87,12 +87,8 @@ const Settings = () => {
                     <div className="inputForm">
                         <IoLocationOutline style={{ fill: 'white', fontSize: '24px' }} />
 
-                        <input type="email" className="input" readOnly value={userDetail && userDetail.address} placeholder="Enter your Bio" />
+                        <input type="text" className="input" readOnly value={userDetail && userDetail.address} />
                     </div>
-
-
-
-                    {/* <button type="button" className="button-submit">Update</button> */}
                 </form>
 
             </div>

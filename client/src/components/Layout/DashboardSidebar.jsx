@@ -17,6 +17,10 @@ import { toast } from "react-toastify";
 
 // eslint-disable-next-line react/prop-types
 const DashboardSidebar = ({ children }) => {
+
+
+
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,7 +30,25 @@ const DashboardSidebar = ({ children }) => {
   const [logoutConfirm, setLogoutConfirm] = useState(false);
 
 
-  const { auth } = useSelector((state) => state.userAuth);
+  const { auth, data, token } = useSelector((state) => state.userAuth);
+  const [userDetail, setUserDetail] = useState(null);
+
+  useEffect(() => {
+    getUserDetail();
+  }, []);
+  const getUserDetail = async () => {
+    const response = await fetch(
+      `${import.meta.env.VITE_CLIENT_API}/api/Customer/GetDetail`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    setUserDetail(result);
+  };
 
   const handleChildData = (data) => {
     setLogoutConfirm(data);
@@ -56,7 +78,7 @@ const DashboardSidebar = ({ children }) => {
       />
       <header className="dashboard-panel-container">
         <nav className="panel">
-          <Link to="/" className=" panel-logo">
+          <div className=" panel-logo">
             <img src={Logo} />
             <div
               className="panel-burger"
@@ -64,7 +86,7 @@ const DashboardSidebar = ({ children }) => {
             >
               <IoMenu />
             </div>
-          </Link>
+          </div>
 
           <div className="panel-account">
             <div
@@ -85,9 +107,9 @@ const DashboardSidebar = ({ children }) => {
                 </div>
                 <div className="profile-detail">
                   <p className="profile-name m-0">
-                    <strong>Shamama Ali</strong>
+                    <strong>{data && data.name}</strong>
                   </p>
-                  <p className="profile-email m-0">shamamaali.123@gmail.com</p>
+                  <p className="profile-email m-0">{userDetail && userDetail.email}</p>
                 </div>
               </div>
 

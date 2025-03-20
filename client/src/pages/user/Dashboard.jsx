@@ -38,7 +38,9 @@ const Dashboard = () => {
             }
         );
         const result = await response.json();
+        console.log(result);
         setUserProductDetail(result);
+
     };
 
     return (
@@ -54,19 +56,6 @@ const Dashboard = () => {
                                     <h2><strong>BALANCE</strong></h2>
                                     <span>Rs. {userDetail?.balance}</span>
                                 </div>
-                                {/* <div className="progress">
-                                    <SemiCircleProgress
-                                        percentage={70}
-                                        size={{
-                                            width: 150,
-                                            height: 150,
-                                        }}
-                                        strokeWidth={6}
-                                        strokeColor="#FB751A"
-                                        strokeLinecap="round"
-
-                                    />
-                                </div> */}
                             </div>
 
                         </div>
@@ -76,19 +65,6 @@ const Dashboard = () => {
                                     <h2><strong>SUBSCRIPTION</strong></h2>
                                     <span>{userDetail?.package}</span>
                                 </div>
-                                {/* <div className="progress">
-                                    <SemiCircleProgress
-                                        percentage={70}
-                                        size={{
-                                            width: 150,
-                                            height: 150,
-                                        }}
-                                        strokeWidth={6}
-                                        strokeColor="#FB751A"
-                                        strokeLinecap="round"
-
-                                    />
-                                </div> */}
                             </div>
                         </div>
                         <div className="col-12 col-md-4">
@@ -101,18 +77,16 @@ const Dashboard = () => {
                         </div>
                     </div>
 
+                    <h3 className="mt-4" >OCCUPIED GAMES</h3>
                     <div className="row mt-3">
                         <div className="col-12 col-md-12">
                             <div className="item item-1" style={{ height: 'auto' }} >
                                 <div className="detail" style={{ gap: '10px' }}>
                                     {
                                         userProductDetail?.map((item, index) => {
-                                            return <h2 key={index} style={{ fontSize: '24px' }}><strong>GAME NAME </strong><span style={{ fontSize: '24px' }}>{item?.productName}</span></h2>
+                                            return <h2 key={index} style={{ fontSize: '24px' }}> <strong>{item?.gameCategory}: </strong>  <span style={{ fontSize: '24px' }}>{item?.productName}</span></h2>
                                         })
                                     }
-
-
-
                                 </div>
 
                             </div>
